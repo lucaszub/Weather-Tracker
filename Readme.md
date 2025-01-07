@@ -108,3 +108,7 @@ Conclusion
 Ce tutoriel t’a permis de déployer une image Docker dans Azure Container Registry, puis de la pousser dans une Web App Azure. Cela te permet de bénéficier de l’infrastructure Azure pour héberger et gérer tes applications conteneurisées de manière efficace et sécurisée.
 
 
+az ad sp create-for-rbac --name github-actions --role contributor --scopes /subscriptions/12345678-abcd-1234-abcd-1234567890ab/resourceGroups/weatherappressource --sdk-auth
+
+826e168c-4057-4ad9-b7b0-626e2a767c5d
+
