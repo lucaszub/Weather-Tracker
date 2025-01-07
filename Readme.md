@@ -90,5 +90,21 @@ Tu peux aussi accéder à ton application via l'URL fournie par Azure.
 Remarque sur la Sécurité
 Assure-toi de ne pas exposer d'informations sensibles dans les scripts de déploiement, comme les identifiants de connexion (ACR_USERNAME, ACR_PASSWORD). Utilise des variables d'environnement ou des services de gestion de secrets comme Azure Key Vault pour une gestion sécurisée des credentials.
 
+## Activer les Redéploiements Automatiques 
+
+Si tu souhaites que les changements dans ACR se propagent automatiquement à Azure App Service, tu peux activer Continuous Deployment :
+
+Lien entre la Web App et ACR pour surveiller les mises à jour.
+```bash
+az webapp deployment container config
+  --name weatherappwebapp 
+  --resource-group MyRessourceGroup 
+  --enable-cd true
+```
+Cela activera le déploiement continu (Continuous Deployment) basé sur les modifications de l'image.
+
+
 Conclusion
 Ce tutoriel t’a permis de déployer une image Docker dans Azure Container Registry, puis de la pousser dans une Web App Azure. Cela te permet de bénéficier de l’infrastructure Azure pour héberger et gérer tes applications conteneurisées de manière efficace et sécurisée.
+
+
