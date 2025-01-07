@@ -3,7 +3,7 @@ name: Deploy Weather App to Azure
 on:
   push:
     branches:
-      - main  # Déclenche l'action suur un push vers la branche principale
+      - main  # Déclenche l'action sur un push vers la branche principale
 
 jobs:
   deploy:
@@ -27,11 +27,15 @@ jobs:
       run: |
         TAG="v$(date +'%Y%m%d%H%M%S')"
         echo "Tagging the image with version: $TAG"
+        echo "ACR Name: ${{ secrets.ACR_NAME }}"
+        echo "Image Name: ${{ secrets.IMAGE_NAME }}"
+        echo "Tag: $TAG"
         docker build -t "${{ secrets.ACR_NAME }}.azurecr.io/${{ secrets.IMAGE_NAME }}:$TAG" .
 
     - name: Push Docker image to ACR
       run: |
         echo "Pushing Docker image to ACR..."
+        echo "Pushing image: ${{ secrets.ACR_NAME }}.azurecr.io/${{ secrets.IMAGE_NAME }}:$TAG"
         docker push "${{ secrets.ACR_NAME }}.azurecr.io/${{ secrets.IMAGE_NAME }}:$TAG"
 
     - name: Azure Web App deployment
@@ -49,4 +53,3 @@ jobs:
 
     - name: Deployment completed
       run: echo "Deployment completed with version $TAG"
-#test
