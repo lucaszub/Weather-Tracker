@@ -18,7 +18,7 @@ jobs:
       - name: Set up Docker Buildx
         uses: docker/setup-buildx-action@v2
 
-      # Log in to Azure
+      # Log in to Azure CLI
       - name: Log in to Azure CLI
         uses: azure/login@v1
         with:
@@ -32,12 +32,16 @@ jobs:
       # Build Docker image
       - name: Build Docker image
         run: |
-          docker build -t weatherapp.azurecr.io/weatherapp:latest .
+          docker build -t weatherapp:latest .
+
+      - name: tag Docker image 
+        run: |
+          docker tag weatherapplucasz:latest weatherapplucasz.azurecr.io/weatherapp:latest    
 
       # Push Docker image to ACR
       - name: Push Docker image to ACR
         run: |
-          docker push weatherapp.azurecr.io/weatherapp:latest
+          docker push weatherapplucasz.azurecr.io/weatherapp:latest
 
       # Déployer sur Azure Web App
       - name: Deploy to Azure Web App
