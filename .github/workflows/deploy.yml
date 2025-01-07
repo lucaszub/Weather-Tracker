@@ -3,7 +3,7 @@ name: Deploy Weather App to Azure
 on:
   push:
     branches:
-      - main  # Déclenche l'action sur un push vers la branche principale
+      - main  # Déclenche l'action suur un push vers la branche principale
 
 jobs:
   deploy:
