@@ -13,4 +13,4 @@ def read_message2():
 
 @app.get("/lucas/hola")
 def read_message2():
-    return {"message": "Changement pour test!"}
+    return {"message": "Changement pour pour lucas zubiarrain!"}
