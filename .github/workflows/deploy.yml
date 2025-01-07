@@ -31,7 +31,7 @@ jobs:
         docker build -t ${{ secrets.REGISTRY_LOGIN_SERVER }}/weather-app:latest .
         docker push ${{ secrets.REGISTRY_LOGIN_SERVER }}/weather-app:latest
 
-    # 5. Déploiement sur Azure Web App
+    # 5. Déploiement sur Azure Web App test
     - name: Deploy to Azure Web App
       uses: azure/webapps-deploy@v2
       with:
