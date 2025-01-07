@@ -114,3 +114,5 @@ az ad sp create-for-rbac --name github-actions --role contributor --scopes /subs
 
 
 az ad sp create-for-rbac --name "github-actions" --role contributor --scopes /subscriptions/826e168c-4057-4ad9-b7b0-626e2a767c5d/resourceGroups/weatherappressource --sdk-auth
+
+az role assignment list --assignee 602a4813-2ee8-4dd6-8fe2-00b455eb5c77 --scope /subscriptions/5850cff6-c715-47ec-817a-e899a75ecd04/resourceGroups/weatherappressource/providers/Microsoft.ContainerRegistry/registries/weatherapplucasz

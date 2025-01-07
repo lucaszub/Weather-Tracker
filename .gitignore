@@ -1,2 +1,3 @@
 venv/
 deploy.ps1
+azure_credential.json
