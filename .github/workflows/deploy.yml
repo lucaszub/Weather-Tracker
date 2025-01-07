@@ -36,8 +36,8 @@ jobs:
     - name: Deploy to Azure Web App
       run: |
         az webapp config container set \
-          --name weatherappplanname \
-          --resource-group < \
+          --name weatherapplucasz \
+          --resource-group weatherappressource \
           --docker-custom-image-name ${{ secrets.ACR_NAME }}.azurecr.io/myapp:latest \
           --docker-registry-server-url https://${{ secrets.ACR_NAME }}.azurecr.io \
           --docker-registry-server-user ${{ secrets.AZURE_CLIENT_ID }} \
