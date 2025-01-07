@@ -47,5 +47,5 @@ jobs:
       - name: Deploy to Azure Web App
         uses: azure/webapps-deploy@v2
         with:
-          app-name: weatherapp
-          images: weatherapp.azurecr.io/weatherapp:latest
+          app-name: weatherappplanname
+          images: weatherapplucasz.azurecr.io/weatherapp:latest
