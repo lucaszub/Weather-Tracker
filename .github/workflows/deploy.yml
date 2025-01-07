@@ -27,19 +27,18 @@ jobs:
       run: |
         TAG="v$(date +'%Y%m%d%H%M%S')"
         echo "Tagging the image with version: $TAG"
-        docker build -t "${{ secrets.IMAGE_NAME }}:$TAG" .
-        
-    - name: Tag Docker image
-      run: |
-        docker tag "${{ secrets.IMAGE_NAME }}:$TAG" "${{ secrets.ACR_NAME }}.azurecr.io/${{ secrets.IMAGE_NAME }}:$TAG"
+        docker build -t "${{ secrets.ACR_NAME }}.azurecr.io/${{ secrets.IMAGE_NAME }}:$TAG" .
 
     - name: Push Docker image to ACR
       run: |
+        echo "Pushing Docker image to ACR..."
         docker push "${{ secrets.ACR_NAME }}.azurecr.io/${{ secrets.IMAGE_NAME }}:$TAG"
-        
+
     - name: Azure Web App deployment
       run: |
+        echo "Getting ACR password..."
         ACR_PASSWORD=$(az acr credential show --name ${{ secrets.ACR_NAME }} --query "passwords[0].value" -o tsv)
+        echo "Deploying to Azure Web App..."
         az webapp config container set \
           --name ${{ secrets.WEB_APP_NAME }} \
           --resource-group ${{ secrets.RESOURCE_GROUP }} \
