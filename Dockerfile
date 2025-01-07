@@ -10,7 +10,7 @@ COPY . /app/
 # Installe les dépendances
 RUN pip install --no-cache-dir -r requirements.txt
 
-# Expose le port utilisé par FastAPI
+# Expose le port utilisé par FastAPI T
 EXPOSE 8000
 
 # Commande pour lancer l'application
