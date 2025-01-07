@@ -112,3 +112,5 @@ az ad sp create-for-rbac --name github-actions --role contributor --scopes /subs
 
 826e168c-4057-4ad9-b7b0-626e2a767c5d
 
+
+az ad sp create-for-rbac --name "github-actions" --role contributor --scopes /subscriptions/826e168c-4057-4ad9-b7b0-626e2a767c5d/resourceGroups/weatherappressource --sdk-auth
