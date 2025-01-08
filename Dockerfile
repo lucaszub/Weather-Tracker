@@ -1,18 +1,17 @@
-# Utilisation de l'image Python officielle
+# Utiliser une image Python officielle comme base
 FROM python:3.9-slim
 
 # Définir le répertoire de travail dans le conteneur
 WORKDIR /app
 
-# Copier le fichier de dépendances et installer les packages
-COPY requirements.txt .
+# Copier les fichiers de l'application dans le conteneur
+COPY . /app
+
+# Installer les dépendances depuis le fichier requirements.txt
 RUN pip install --no-cache-dir -r requirements.txt
 
-# Copier le reste des fichiers de l'application
-COPY . .
+# Exposer le port utilisé par Streamlit (par défaut 8501)
+EXPOSE 8501
 
-# Exposer le port 80 pour FastAPI
-EXPOSE 80
-
-# Lancer l'application avec uvicorn
-CMD ["uvicorn", "main:app", "--host", "0.0.0.0", "--port", "80"]
+# Commande pour lancer l'application Streamlit
+CMD ["streamlit", "run", "app.py"]
