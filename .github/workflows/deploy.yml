@@ -7,7 +7,7 @@ on:
 
 jobs:
   build_and_push:
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-V1032909
 
     steps:
       # Checkout le code source
@@ -32,20 +32,20 @@ jobs:
       # Build Docker image
       - name: Build Docker image
         run: |
-          docker build -t weatherapp:latest .
+          docker build -t weatherapp:V1032909 .
 
       - name: tag Docker image 
         run: |
-          docker tag weatherapp:latest weatherapplucasz.azurecr.io/weatherapp:latest    
+          docker tag weatherapp:V1032909 weatherapplucasz.azurecr.io/weatherapp:V1032909    
 
       # Push Docker image to ACR
       - name: Push Docker image to ACR
         run: |
-          docker push weatherapplucasz.azurecr.io/weatherapp:latest
+          docker push weatherapplucasz.azurecr.io/weatherapp:V1032909
 
       # Déployer sur Azure Web App
       - name: Deploy to Azure Web App
         uses: azure/webapps-deploy@v2
         with:
           app-name: weatherappplanname
-          images: weatherapplucasz.azurecr.io/weatherapp:latest
+          images: weatherapplucasz.azurecr.io/weatherapp:V1032909
