@@ -7,7 +7,7 @@ on:
 
 jobs:
   build_and_push:
-    runs-on: ubuntu-V1032909
+    runs-on: ubuntu-latest
 
     steps:
       # Checkout le code source
@@ -34,9 +34,9 @@ jobs:
         run: |
           docker build -t weatherapp:V1032909 .
 
-      - name: tag Docker image 
+      - name: tag Docker image
         run: |
-          docker tag weatherapp:V1032909 weatherapplucasz.azurecr.io/weatherapp:V1032909    
+          docker tag weatherapp:V1032909 weatherapplucasz.azurecr.io/weatherapp:V1032909
 
       # Push Docker image to ACR
       - name: Push Docker image to ACR
